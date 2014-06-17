@@ -63,8 +63,8 @@ public class loginandlogout {
 
 		java.util.List<WebElement> buttons = driver.findElements(By
 				.className("android.widget.Button"));
-		System.out.println(buttons.get(0).getTagName());
-		System.out.println(buttons.get(0).getText());
+		//System.out.println(buttons.get(0).getTagName());
+		//System.out.println(buttons.get(0).getText());
 		buttons.get(0).click();
 
 		// WebElement signIn = driver.findElementById("login");
