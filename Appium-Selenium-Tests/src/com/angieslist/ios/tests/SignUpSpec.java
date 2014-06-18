@@ -2,32 +2,28 @@ package com.angieslist.ios.tests;
 
 import java.net.MalformedURLException;
 import java.util.Random;
-
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
+import com.angieslist.ios.pages.HomePage;
 import com.angieslist.common.AppiumDriverConfigure;
 import com.angieslist.ios.pages.LandingPage;
 import com.angieslist.ios.pages.SignUpPage2;
 
-public class SignUpSpec extends AppiumDriverConfigure {
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-public static void main(String[] args) throws InterruptedException, MalformedURLException {
-		
-		SignUpSpec objSignUpSpec = new SignUpSpec();
-		
-		objSignUpSpec.setup();
-		objSignUpSpec.signUpAndSignIn();
-		objSignUpSpec.tearDown();
-	}
+public class SignUpSpec extends AppiumDriverConfigure {
 	
-	@BeforeMethod
+	HomePage homePage;
+
+	@Before
 	public void setup() throws MalformedURLException { initIOSDriver(); }
 
 	@Test
-	protected void signUpAndSignIn() throws InterruptedException {
+	public void signUpAndSignInAndLogout() throws InterruptedException {
 		LandingPage landingPage = PageFactory.initElements(driver, LandingPage.class);
 		
 		String address = "677 Teal St";
@@ -40,15 +36,23 @@ public static void main(String[] args) throws InterruptedException, MalformedURL
 		String last = "Johns";
 		String first = "Jimmy";
 		String phone = "1234567890";
-		Random random = new Random();
-		String email = random.nextInt() + "@example.com";
+        
+		Random rand = new Random();
+        int random = rand.nextInt((2147483647 - 1) + 1);
+        char c = (char)(rand.nextInt(26) + 'a');
+		
+        String email = c+random+"@example.com";
 		String password="tests";
 		
-		signUpPage2.fillInfoAndContinue(first, last, phone, email, password);
+		homePage = signUpPage2.fillInfoAndContinue(first, last, phone, email, password);
+
 		Thread.sleep(5000);
+		homePage.clickBubbles();
+		Thread.sleep(1000);
+		homePage.clickBurgerButton().clickLogoutButton();
 	}
 	
-    @AfterMethod
+    @After
     public void tearDown(){
         quitDriver();
     }

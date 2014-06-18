@@ -3,29 +3,23 @@ package com.angieslist.android.tests;
 import java.net.MalformedURLException;
 
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
 import com.angieslist.android.pages.HomePage;
 import com.angieslist.android.pages.LandingPage;
 import com.angieslist.common.AppiumDriverConfigure;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 public class LogoutSpec extends AppiumDriverConfigure {
 
-	public static void main(String[] args) throws InterruptedException, MalformedURLException {
-		
-		LogoutSpec objLogoutSpec = new LogoutSpec();
-		
-		objLogoutSpec.setup();
-		objLogoutSpec.logout();
-	}
-	
-	@BeforeMethod
+	@Before
 	public void setup() throws MalformedURLException { initANDROIDDriver(); }
 
 	@Test
-	protected void logout() throws InterruptedException {
+	public void logout() throws InterruptedException {
 		LandingPage loginPage = PageFactory.initElements(driver, LandingPage.class);
 		
 		String password="test";
@@ -40,7 +34,7 @@ public class LogoutSpec extends AppiumDriverConfigure {
 					
 	}
 	
-    @AfterMethod
+    @After
     public void tearDown(){
         quitDriver();
     }

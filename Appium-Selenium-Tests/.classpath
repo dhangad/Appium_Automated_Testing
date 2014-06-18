@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="/Users/dhangad/Downloads/Selenium Drivers/selenium-server-standalone-2.41.0.jar"/>
 	<classpathentry kind="lib" path="/Users/dhangad/Downloads/Selenium Drivers/java-client-1.2.0.jar"/>
 	<classpathentry kind="lib" path="/Users/dhangad/Downloads/Selenium Drivers/google-gson-2.2.4-release/google-gson-2.2.4/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="/Users/dhangad/Downloads/junit-4.11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

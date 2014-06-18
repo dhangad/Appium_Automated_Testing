@@ -15,14 +15,12 @@ public class HomePage {
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[2]")
     private WebElement burgerButton;
     
-    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")
-    private WebElement topLeftBubble; 
-
-    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")
-    private WebElement topRightBubble; 
-
-    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")
-    private WebElement bottomBubble; 
+    @FindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAButton[1]")
+    private WebElement startNewProjectButton;
+    
+    public String getStartNewProjectButtonText() {
+    	return startNewProjectButton.getText();
+    }
     
     public MenuPage clickBurgerButton()
     {
@@ -30,11 +28,30 @@ public class HomePage {
     	return PageFactory.initElements(driver, MenuPage.class);
     }
     
+    public CreateProjectPage clickStartNewProjectButton() {
+    	startNewProjectButton.click();
+    	return PageFactory.initElements(driver, CreateProjectPage.class);
+    }
+    
     public void clickBubbles()
     {
-    	topLeftBubble.click();
-    	topRightBubble.click();
-    	bottomBubble.click();
+    	/*    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")
+        private WebElement topLeftBubble; 
+
+        @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")
+        private WebElement topRightBubble; 
+
+        @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")
+        private WebElement bottomBubble; */
+    	
+    	/*try {
+			topLeftBubble.click();
+			topRightBubble.click();
+			bottomBubble.click();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}*/
     }
     
 }

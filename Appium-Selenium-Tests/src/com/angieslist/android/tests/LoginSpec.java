@@ -7,25 +7,20 @@ import com.angieslist.android.pages.LandingPage;
 import com.angieslist.android.pages.HomePage;
 
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 public class LoginSpec extends AppiumDriverConfigure {
 	
-	public static void main(String[] args) throws InterruptedException, MalformedURLException {
-		
-		LoginSpec objLoginSpec = new LoginSpec();
-		
-		objLoginSpec.setup();
-		objLoginSpec.login();
-	}
-	
-	@BeforeMethod
+	@Before
 	public void setup() throws MalformedURLException { initANDROIDDriver(); }
 
 	@Test
-	protected void login() throws InterruptedException {
+	public void login() throws InterruptedException {
 		LandingPage loginPage = PageFactory.initElements(driver, LandingPage.class);
 		
 		String password="test";
@@ -34,7 +29,7 @@ public class LoginSpec extends AppiumDriverConfigure {
 		loginPage.loginIn(emailAddress , password);
 	}
 	
-    @AfterMethod
+    @After
     public void tearDown(){
         quitDriver();
     }
