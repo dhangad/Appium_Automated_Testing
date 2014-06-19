@@ -33,12 +33,12 @@ public class HomePage {
     	startNewProjectButton.click();
     	return PageFactory.initElements(driver, CreateProjectPage.class);
     }
-    boolean topLeftBubbleIsDisplayed;
+    
     public void clickBubbles()
     {
     	try 
     	{
-	    	topLeftBubbleIsDisplayed = this.driver
+    		boolean topLeftBubbleIsDisplayed = this.driver
 						.findElement(
 								By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]"))
 						.isDisplayed();
@@ -67,7 +67,7 @@ public class HomePage {
     	}
     	catch (Exception e) {
 		//e.printStackTrace();
-    		System.out.print(topLeftBubbleIsDisplayed);
+    		//System.out.print(topLeftBubbleIsDisplayed);
     	}
     	
     }

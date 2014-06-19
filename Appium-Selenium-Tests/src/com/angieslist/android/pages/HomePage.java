@@ -1,5 +1,6 @@
 package com.angieslist.android.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,8 +34,38 @@ public class HomePage {
     
     public void clickBubbles()
     {
-    	topLeftBubble.click();
-    	topRightBubble.click();
-    	bottomBubble.click();
+    	try 
+    	{
+    		boolean topLeftBubbleIsDisplayed = this.driver
+						.findElement(
+								By.xpath("//android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]"))
+						.isDisplayed();
+	    		
+	    	if (topLeftBubbleIsDisplayed) {
+	    		this.driver
+				.findElement(
+						By.xpath("//android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).click();
+			}
+	    	else
+	    	{
+	    		topLeftBubbleIsDisplayed = false;
+	    	}
+			boolean topRightBubbleIsDisplayed = this.driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).isDisplayed();
+			if (topRightBubbleIsDisplayed) {
+	    		this.driver
+				.findElement(
+						By.xpath("//android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).click();
+			}
+	    	boolean bottomBubbleIsDisplayed = this.driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).isDisplayed();
+	    	if (bottomBubbleIsDisplayed) {
+	    		this.driver
+				.findElement(
+						By.xpath("//android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).click();
+			}
+    	}
+    	catch (Exception e) {
+    		//e.printStackTrace();
+        		//System.out.print(topLeftBubbleIsDisplayed);
+    	}
     }
 }
