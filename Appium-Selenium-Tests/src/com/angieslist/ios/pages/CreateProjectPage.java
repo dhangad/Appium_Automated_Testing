@@ -3,6 +3,7 @@ package com.angieslist.ios.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CreateProjectPage {
 
@@ -53,10 +54,11 @@ public class CreateProjectPage {
 	
 	@FindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAButton[1]")
 	private WebElement submitButton;
-
-
-    
-    public void createNewProject(String projectDesc, String address, String city, String state, String zip) throws InterruptedException {
+	
+	@FindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAButton[2]")
+	private WebElement xCloseButton;
+	
+    public HomePage createNewProject(String projectDesc) throws InterruptedException {
     	serviceCategoryList.click();
     	
     	Thread.sleep(1000);
@@ -87,7 +89,10 @@ public class CreateProjectPage {
 		Thread.sleep(2000);
 		
 		submitButton.click();
+		Thread.sleep(2000);
+		
+		xCloseButton.click();
+		
+		return PageFactory.initElements(driver, HomePage.class);
     }
-    
-	
 }

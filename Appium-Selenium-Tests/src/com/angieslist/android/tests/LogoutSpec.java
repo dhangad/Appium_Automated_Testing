@@ -1,11 +1,11 @@
 package com.angieslist.android.tests;
 
 import java.net.MalformedURLException;
-
 import org.openqa.selenium.support.PageFactory;
 import com.angieslist.android.pages.HomePage;
 import com.angieslist.android.pages.LandingPage;
 import com.angieslist.common.AppiumDriverConfigure;
+import static com.angieslist.common.Utils.DatabaseUtils.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,16 +22,11 @@ public class LogoutSpec extends AppiumDriverConfigure {
 	public void logout() throws InterruptedException {
 		LandingPage loginPage = PageFactory.initElements(driver, LandingPage.class);
 		
-		String password="test";
-		String emailAddress = "member1@example.com";
-		
-		HomePage homePage = loginPage.loginIn(emailAddress , password);
+		HomePage homePage = loginPage.loginIn(EMAIL_ADDRESS_MEMBER1 , PASSWORD);
 		Thread.sleep(5000);
-		homePage.clickBubbles();
-		Thread.sleep(1000);
+		//homePage.clickBubbles();
+		//Thread.sleep(1000);
 		homePage.clickBurgerButton().clickLogoutImageView();
-				
-					
 	}
 	
     @After

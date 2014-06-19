@@ -1,5 +1,6 @@
 package com.angieslist.ios.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,26 +33,43 @@ public class HomePage {
     	startNewProjectButton.click();
     	return PageFactory.initElements(driver, CreateProjectPage.class);
     }
-    
+    boolean topLeftBubbleIsDisplayed;
     public void clickBubbles()
     {
-    	/*    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")
-        private WebElement topLeftBubble; 
-
-        @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")
-        private WebElement topRightBubble; 
-
-        @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")
-        private WebElement bottomBubble; */
+    	try 
+    	{
+	    	topLeftBubbleIsDisplayed = this.driver
+						.findElement(
+								By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]"))
+						.isDisplayed();
+	    		
+	    	if (topLeftBubbleIsDisplayed) {
+	    		this.driver
+				.findElement(
+						By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")).click();
+			}
+	    	else
+	    	{
+	    		topLeftBubbleIsDisplayed = false;
+	    	}
+			boolean topRightBubbleIsDisplayed = this.driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")).isDisplayed();
+			if (topRightBubbleIsDisplayed) {
+	    		this.driver
+				.findElement(
+						By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")).click();
+			}
+	    	boolean bottomBubbleIsDisplayed = this.driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")).isDisplayed();
+	    	if (bottomBubbleIsDisplayed) {
+	    		this.driver
+				.findElement(
+						By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAStaticText[1]")).click();
+			}
+    	}
+    	catch (Exception e) {
+		//e.printStackTrace();
+    		System.out.print(topLeftBubbleIsDisplayed);
+    	}
     	
-    	/*try {
-			topLeftBubble.click();
-			topRightBubble.click();
-			bottomBubble.click();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		}*/
     }
     
 }
